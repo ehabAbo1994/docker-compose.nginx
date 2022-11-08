@@ -1,0 +1,14 @@
+# specifies the base(parent) image.
+FROM python:3.9-alpine
+# copy the requirements.txt to the container
+COPY ./requirements.txt /requirements.txt
+#Set working directory for the instructions that follow.
+WORKDIR /
+# isntall all the dependeces the the requirements.txt file.
+RUN pip install -r requirements.txt
+#let you copy files and directories from the host.
+COPY . /
+# provides command and arguments for an executing container.
+ENTRYPOINT [ "python3" ]
+#  provides a command and arguments for an executing container. There can be only one CMD.
+CMD [ "app1.py" ]
